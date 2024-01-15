@@ -1,5 +1,6 @@
 package com.xxwelldone.workshopmongo.config;
 
+import com.xxwelldone.workshopmongo.dto.UserDto;
 import com.xxwelldone.workshopmongo.model.User;
 import com.xxwelldone.workshopmongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User x = new User();
+
+        UserDto x = new UserDto();
         x.setName("wes");
         x.setEmail("test1");
         userService.save(x);

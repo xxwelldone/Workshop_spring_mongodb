@@ -1,5 +1,6 @@
 package com.xxwelldone.workshopmongo.service;
 
+import com.xxwelldone.workshopmongo.dto.UserDto;
 import com.xxwelldone.workshopmongo.model.User;
 import com.xxwelldone.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class UserService {
     public List<User> findAll(){
         return repo.findAll();
     }
-    public User save(User user){
-        return repo.save(user);
+    public User save(UserDto user){
+        return repo.save(new User(user.getId(), user.getName(), user.getEmail()));
     }
 }
