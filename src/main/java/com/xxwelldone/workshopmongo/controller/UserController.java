@@ -28,17 +28,27 @@ public class UserController {
         return ResponseEntity.ok().body(dtoList);
     }
     @PostMapping
-    public ResponseEntity<UserDto> add(@RequestBody UserDto user ){
-        User obj = userService.save(user);
-        user.setId(obj.getId());
+    public ResponseEntity<UserDto> add(@RequestBody UserDto userDto ){
+        User obj = userService.save(userDto);
+        userDto.setId(obj.getId());
         URI  uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).body(user);
+        return ResponseEntity.created(uri).body(userDto);
     }
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable String id){
         User user = userService.findById(id);
         UserDto userDto = new UserDto(user);
         return ResponseEntity.ok().body(userDto);
+    }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserDto> put(@RequestBody UserDto userDto, @PathVariable String id){
+       UserDto userDto1 = new UserDto(userService.put(id, userDto));
+      return ResponseEntity.ok().body(userDto1);
     }
 }
