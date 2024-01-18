@@ -1,8 +1,7 @@
 package com.xxwelldone.workshopmongo.repository;
 
-import com.xxwelldone.workshopmongo.model.User;
+import com.xxwelldone.workshopmongo.model.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-
-public interface UserRepository extends MongoRepository<User, String> {
+public interface PostRepository extends MongoRepository<Post, String> {
 }

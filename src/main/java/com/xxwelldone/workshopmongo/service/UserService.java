@@ -39,4 +39,7 @@ public class UserService {
        return repo.save(obj);
 
     }
+    public List<User> saveAll(List<User> list){
+        return repo.saveAll(list);
+    }
 }
