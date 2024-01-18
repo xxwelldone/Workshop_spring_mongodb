@@ -29,7 +29,7 @@ public class TestConfig implements CommandLineRunner {
         User y =  new User(null, "Fefucho", "fefu@gmail.com");
 
         userService.saveAll(Arrays.asList(x,y));
-        Post p = new Post(null, Instant.now(), "Jão chato demais", "Gente??????? como aguentam?");
+        Post p = new Post(null, Instant.now(), "Jão chato demais", "Gente??????? como aguentam?", x);
         postService.save(p);
 
     }
