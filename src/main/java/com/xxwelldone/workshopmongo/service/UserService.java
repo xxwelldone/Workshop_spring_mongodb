@@ -42,4 +42,5 @@ public class UserService {
     public List<User> saveAll(List<User> list){
         return repo.saveAll(list);
     }
+
 }

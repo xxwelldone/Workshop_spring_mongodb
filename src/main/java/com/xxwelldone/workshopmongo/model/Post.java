@@ -1,11 +1,13 @@
 package com.xxwelldone.workshopmongo.model;
 
+import com.xxwelldone.workshopmongo.dto.UserDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "posts")
@@ -15,13 +17,23 @@ public class Post implements Serializable {
     private Instant date;
     private String title;
     private String body;
-    private User author;
+
+    private UserDto author;
+    private List<Comment> comments = new ArrayList<>();
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Post() {
 
     }
 
-    public Post(String id, Instant date, String title, String body, User author) {
+    public Post(String id, Instant date, String title, String body, UserDto author) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -73,11 +85,11 @@ public class Post implements Serializable {
         return Objects.hash(getId());
     }
 
-    public User getAuthor() {
+    public UserDto getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(UserDto author) {
         this.author = author;
     }
 }
