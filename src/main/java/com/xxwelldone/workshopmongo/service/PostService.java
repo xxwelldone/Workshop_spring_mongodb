@@ -30,4 +30,7 @@ public class PostService {
         obj.setTitle(p.getTitle());
        return postRepository.save(obj);
     }
+    public List<Post> findAllByTitle(String title){
+        return postRepository.findAllBytitleContainingIgnoreCase(title);
+    }
 }

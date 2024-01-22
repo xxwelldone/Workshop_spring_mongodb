@@ -37,6 +37,7 @@ public class TestConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
         userRepository.deleteAll();
         postRepository.deleteAll();
+        commentRepository.deleteAll();
 
         User x =new User(null, "Wesley", "wm@gmail.com");
         User y =  new User(null, "Fefucho", "fefu@gmail.com");

@@ -27,5 +27,8 @@ public class PostController {
       Post p=  postService.put(id, post);
       return ResponseEntity.ok().body(p);
     }
-
+    @GetMapping(value = "/search/{title}")
+    public ResponseEntity<List<Post>> findAllByTitle (@PathVariable String title){
+        return ResponseEntity.ok().body(postService.findAllByTitle(title));
+    }
 }
