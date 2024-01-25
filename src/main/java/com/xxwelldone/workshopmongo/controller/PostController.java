@@ -1,5 +1,6 @@
 package com.xxwelldone.workshopmongo.controller;
 
+import com.xxwelldone.workshopmongo.controller.exception.URL;
 import com.xxwelldone.workshopmongo.model.Post;
 import com.xxwelldone.workshopmongo.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ public class PostController {
       Post p=  postService.put(id, post);
       return ResponseEntity.ok().body(p);
     }
-    @GetMapping(value = "/search/{title}")
-    public ResponseEntity<List<Post>> findAllByTitle (@PathVariable String title){
-        return ResponseEntity.ok().body(postService.findAllByTitle(title));
+    @GetMapping(value = "/search")
+    public ResponseEntity<List<Post>> findAllByTitle
+            (@RequestParam(value = "title", defaultValue = "") String title){
+
+        return ResponseEntity.ok().body(postService.findAllByTitle( URL.decodeParam(title)));
     }
 }
